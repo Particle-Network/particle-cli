@@ -11,7 +11,7 @@ const nacl = require('tweetnacl');
 export class SignMessage extends Command {
     static description = 'Sign a message with a keypair';
 
-    static examples = [`$ particle sign-message '`];
+    static examples = [`$ particle sign-message 'Particle Network' --chain solana --keypair ./keypair.json`];
 
     static args = [
         {
@@ -36,8 +36,8 @@ export class SignMessage extends Command {
             char: 'c',
             required: false,
             description: 'The chain type to use for signing',
-            options: ['evm-chains', 'solana'],
-            default: 'evm-chains',
+            options: ['evm-chain', 'solana'],
+            default: 'evm-chain',
         }),
     };
 
