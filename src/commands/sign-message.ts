@@ -1,13 +1,6 @@
 import { Command, Flags } from '@oclif/core';
 import { prompt } from '@oclif/core/lib/cli-ux/prompt';
-import {
-    ecsign,
-    isValidPrivate,
-    privateToAddress,
-    stripHexPrefix,
-    toChecksumAddress,
-    toRpcSig
-} from '@ethereumjs/util';
+import { ecsign, isValidPrivate, privateToAddress, stripHexPrefix, toChecksumAddress, toRpcSig } from '@ethereumjs/util';
 import * as fs from 'fs';
 import { sha256 } from 'js-sha256';
 import * as bs58 from 'bs58';
@@ -73,7 +66,7 @@ export class SignMessage extends Command {
             }
 
             address = bs58.encode(keypair.publicKey);
-            signature = Buffer.from(nacl.sign(msgHash, keypair.secretKey)).toString('hex');
+            signature = Buffer.from(nacl.sign.detached(msgHash, keypair.secretKey)).toString('hex');
         } else {
             let privateKey;
             if (!!flags.keypair) {
